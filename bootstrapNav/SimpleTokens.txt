@@ -1,0 +1,32 @@
+<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+[*>NODE]
+</ul>
+[>NODE]
+	<li class="[?NODE]nav-item dropdown [/?][?SELECTED]active[/?]" aria-haspopup="true" data-toggle="dropdown">
+	[?ENABLED]
+		<a  class="nav-link dropdown-toggle" aria-haspopup="true" data-toggle="dropdown" href="[=URL]" target="[=TARGET]" [?NODE] [/?]>[=TEXT] [?NODE][/?]</a>
+	[?ELSE]
+		<a  class="nav-link dropdown-toggle" aria-haspopup="true" data-toggle="dropdown" href="#" [?NODE] [/?]>[=TEXT] [?NODE][/?]</a>
+	[/?]
+	[?NODE]
+	    <ul class="dropdown-menu" aria-haspopup="true" data-toggle="dropdown">
+	    [*>NODE]
+	    </ul>
+	[/?]
+	</li>
+[/>]
+
+<script type="text/javascript">
+(function($){
+	$(document).ready(function(){
+		$(".dropdown-toggle").on("mouseover", function(event){
+            var $this = $(this).parent().find(">ul");
+            if($this.length == 0) return;
+            dnn.addIframeMask($this[0]);
+		});
+		$(".dropdown").attr("aria-haspopup", "true");
+		$(".dropdownactive").attr("aria-haspopup", "true");
+		$(".dropdown-menu").attr("aria-haspopup", "false");
+	});
+})(jQuery);
+</script>
